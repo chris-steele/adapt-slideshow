@@ -1,0 +1,21 @@
+.slideshow.popup {
+
+	.controls {
+		&.controls-inactive {
+	        display: none;
+	    }
+
+		.left, .right {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			z-index: 541;
+		}
+	}
+
+	&.fullscreen {
+		.left, .right {
+			position: fixed;
+		}
+	}
+}

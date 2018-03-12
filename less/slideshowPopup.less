@@ -1,0 +1,122 @@
+// N.B. it is assumed that slideshow popups will not contain nested slideshows
+
+.slideshow.popup {
+
+	position: relative;
+	width:100%;
+	height:100%;
+
+	&.fullscreen {
+		.slideshow-popup {
+			position: fixed;
+			height: auto;
+		}
+		.slideshow-shadow {
+			position: fixed;
+		}
+	}
+
+	&.initialising {
+		.slideshow-popup {
+			height: @loader-height !important;
+		}
+		.slideshow-cue-card {
+			display: block;
+		}
+		.slideshow-popup-done {
+			.display-none;
+		}
+		.controls {
+			.display-none;
+		}
+
+	}
+
+	&.opening {
+		.slideshow-cue-card {
+			display: block;
+
+			.loader-gif {
+				display: none;
+			}
+		}
+		.slideshow-popup-done {
+			.display-none;
+		}
+		.controls {
+			.display-none;
+		}
+	}
+
+	&.finalising {
+		.slideshow-cue-card {
+			display: block;
+
+			.loader-gif {
+				display: none;
+			}
+		}
+		.slideshow-popup-done {
+			.display-none;
+		}
+		.controls {
+			.display-none;
+		}
+	}
+
+	.slideshow-popup {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		min-height: @loader-height;
+		max-height: 100%;
+        z-index:540;
+    }
+
+    .slideshow-popup-inner {
+    	min-height: 100%;
+    	opacity: 0;
+
+    	.slideshow-popup-content {
+			padding: 60px 20px;
+		}
+    }
+
+    .slideshow-popup-done {
+		border: 2px solid @notify-color-inverted;
+		border-radius: 50%;
+		display:inline-block;
+		margin: 20px 10px;
+		min-height:auto;
+		padding: 5px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 38px;
+		width: 38px;
+
+		.slideshow-popup-icon-close {
+			color: @notify-color-inverted;
+		}
+	}
+
+    .slideshow-shadow {
+        z-index:539;
+    }
+
+    .slideshow-shadow {
+    	background-color: rgba(255, 255, 255, 0.75);
+    	position: absolute;
+    	top: 0px;
+    	left: 0px;
+    	height: 100%;
+    	width: 100%;
+    	opacity: 0;
+    	transition: opacity 0.6s ease-in;
+
+    	&.shadow-visible {
+    		opacity: 1;
+    	}
+    }
+}

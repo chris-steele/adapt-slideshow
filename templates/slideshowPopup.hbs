@@ -1,0 +1,31 @@
+<div class="slideshow-shadow"></div>
+{{!-- I've moved shadow to sit behind popup --}}
+
+<div class="slideshow-popup">
+    <div class="slideshow-ghost"></div>
+    <div class="slideshow-cue-card">
+        <div class="loader-gif"></div>
+    </div>
+    <div class="slideshow-popup-inner">
+        <div class="slideshow-popup-content">
+            <div class="slideshow-popup-content-inner">
+                <div class="slideshow-inner">
+                    <div class="slideshow-viewport">
+                        <div class="slideshow-view-container clearfix">
+                        </div>
+                    </div>
+
+                    {{#if _useButtons}}
+                        <div class="controls">
+                            <button class="left">Left</button>
+                            <button class="right">Right</button>
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        <button class="base slideshow-popup-done">
+            <div class="slideshow-popup-icon-close icon icon-cross"></div>
+        </button> 
+    </div>
+</div>

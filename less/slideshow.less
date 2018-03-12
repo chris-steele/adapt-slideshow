@@ -1,0 +1,113 @@
+// child combinator (>) used to allow nested slideshows to function independently
+
+@loader-height: 200px;
+@loader-width: 200px;
+
+.slideshow-inner {
+
+    &.ready {
+        > .slideshow-viewport {
+
+            > .slideshow-view-container {
+                visibility: inherit;
+            }
+        }
+    }
+
+    > .slideshow-viewport {
+        width: 100%;
+        overflow: hidden;
+
+        > .slideshow-view-container {
+            visibility: hidden;
+            overflow: hidden;
+
+            > .slideshow-item {
+                position: relative;
+                visibility: hidden;
+            }
+        }
+    }
+
+    &.ready {
+        &.transition-slide {
+
+            > .slideshow-viewport {
+
+                > .slideshow-view-container {
+
+                    > .slideshow-item {
+                        float: left;
+                    }
+                }
+            }
+        }
+
+        &.transition-fade, &.transition-none {
+
+            > .slideshow-viewport {
+
+                > .slideshow-view-container {
+                    position: relative;
+
+                    > .slideshow-item {
+                        opacity: 0;
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                    }
+                }
+            }
+        }
+    }
+
+    > .controls-inactive {
+        display: none;
+    }
+}
+
+.slideshow {
+    &.initialising {
+        > .slideshow-cue-card {
+            display: block;
+            
+            > .loader-gif {
+                display: block;
+            }
+        }
+    }
+
+    &.ready {
+        > .slideshow-cue-card {
+            display: none;
+        }
+    }
+}
+
+.slideshow-ghost {
+    position: absolute;
+    visibility: hidden;
+    height: @loader-height;
+}
+
+.slideshow-cue-card {
+    background-color: @theme-black;
+    display: none;
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    .loader-gif {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -(@loader-height / 2);
+        margin-left: -(@loader-width / 2);
+        height: @loader-height;
+        width: @loader-width;
+        .item-title;
+        background-image: url('@{asset}ajax-loader-inverted.gif');
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
